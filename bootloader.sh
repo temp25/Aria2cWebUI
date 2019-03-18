@@ -34,7 +34,4 @@ chmod +x aria2c
 export PATH="$PATH:`pwd`/aria2c"
 echo "aria2c lib installed successfully"
 
-chmod +x Aria2_Static_Build_LINUX-X64.sh
-./Aria2_Static_Build_LINUX-X64.sh
-
 heroku-php-apache2  #start web server
