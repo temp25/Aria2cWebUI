@@ -12,10 +12,10 @@ $(document).ready(function() {
 		return new Promise(function(resolve, reject) {
 			$.post(postUrl, postData)
 				.done(function(data, status, xhr) {
-					/* console.log("done callback called");
+					console.log("done callback called");
 					console.log(xhr);
 					console.log(status);
-					console.log(error); */
+					console.log(error);
 					resolve(xhr);
 				})
 				.fail(function(xhr, status, error) {
