@@ -34,4 +34,9 @@ chmod +x aria2c
 export PATH="$PATH:`pwd`/aria2c"
 echo "aria2c lib installed successfully"
 
+./aria2c --enable-rpc --rpc-listen-all --max-connection-per-server=16 --log=aria2c_rpc.log > /dev/null 2>&1 &
+
+ARIA2C_PID=$!
+echo "aria2c daemon started successfully on PORT 6800 with PID : $ARIA2C_PID"
+
 heroku-php-apache2  #start web server
