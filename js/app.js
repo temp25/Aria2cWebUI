@@ -13,9 +13,10 @@ $(document).ready(function() {
 			
 			$.post(postUrl, postData)
 				.done(function(data, status, xhr) {
-					/* console.log("done callback called");
+					console.log("done callback called");
+					console.log(data);
+					console.log(status);
 					console.log(xhr);
-					console.log(status); */
 					resolve(xhr);
 				})
 				.fail(function(xhr, status, error) {
