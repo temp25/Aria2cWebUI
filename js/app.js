@@ -8,11 +8,33 @@ $(document).ready(function() {
     });
 	
 	function postRequest(url, data) {
-		$.post(url, data, function(data, status, xhr){
-			console.log(data);
-			console.log(status);
-			console.log(xhr);
+		
+		return new Promise(function(resolve, reject) {
+			$.post(url, data, function(data, status, xhr){
+				/* console.log(data);
+				console.log(status);
+				console.log(xhr); */
+				if(xhr.status == 200) {
+					resolve(xhr);
+				} else {
+					reject(new Error(xhr.responseText));
+				}
+			})
+			.done(function(xhr, status, error) {
+				console.log("done callback called");
+				console.log(xhr);
+				console.log(status);
+				console.log(error);
+			})
+			.fail(function(xhr, status, error) {
+				// error handling
+				console.log("fail callback called");
+				console.log(xhr);
+				console.log(status);
+				console.log(error);
+			});
 		});
+		
 	}
 	
 	function addDownload(gid, url, position, percent, completed, size, download_speed, status){
@@ -54,8 +76,16 @@ $(document).ready(function() {
 		postRequest("aria2cManager.php", {
 			action: "addDownload",
 			inputUrl: url,
+		})
+		.then( function (xhr) {
+			console.log('xhr Contents: \n' );
+			console.log(xhr);
+		},
+		function (error) {
+			console.error('Something went wrong', error);
 		});
 		
+		return true;
 	});
 
 	$("#pauseAllDownload").click(function(e){
