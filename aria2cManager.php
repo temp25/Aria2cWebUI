@@ -15,7 +15,7 @@
 		
 		switch($action) {
 			case "addDownload": //echo "Add download invoked with url, " . $_POST["inputUrl"];
-								echo addDownload($_POST["inputUrl"]);
+								echo shell_exec("ls -R -lah /app/vendor/");//addDownload($_POST["inputUrl"]);
 								break;
 			default:	echo "Action not defined";
 		}
