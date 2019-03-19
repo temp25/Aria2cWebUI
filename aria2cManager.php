@@ -8,7 +8,7 @@
 			['dir'=>'/app/downloads']
 		); */
 		
-		return var_export($aria2c->getGlobalStat(), true);//$result["result"];
+		return print_r($aria2c->getGlobalStat(), true);//$result["result"];
 	}
 	
 	if(isset($_POST)) {

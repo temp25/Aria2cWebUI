@@ -15,7 +15,6 @@ $(document).ready(function() {
 					console.log("done callback called");
 					console.log(xhr);
 					console.log(status);
-					console.log(error);
 					resolve(xhr);
 				})
 				.fail(function(xhr, status, error) {
