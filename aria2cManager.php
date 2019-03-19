@@ -33,7 +33,7 @@
 								echo addDownload($aria2c, $_POST["inputUrl"]);
 								break;
 			
-			case "tellStatus": echo tellStatus($aria2c, $_POST["id"])
+			case "tellStatus": echo tellStatus($aria2c, $_POST["id"]);
 								break;
 								
 			default:	echo "Action not defined";
