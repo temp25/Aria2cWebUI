@@ -4,10 +4,10 @@
 	
 	function addDownload($inputUrl) {
 		
-		$result = $aria2c->addUri(
+		/* $result = $aria2c->addUri(
 			[$inputUrl],
 			['dir'=>'/app/downloads']
-		);
+		); */
 		
 		return var_export($aria2c->getGlobalStat(), true);//$result["result"];
 	}
