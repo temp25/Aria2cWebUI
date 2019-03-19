@@ -1,13 +1,15 @@
 <?php
 	require("vendor/autoload.php");
+	$aria2c = new Aria2('http://localhost:6800/jsonrpc');
 	
 	function addDownload($inputUrl) {
-		$aria2c = new Aria2('http://localhost:6800/jsonrpc');
+		
 		$result = $aria2c->addUri(
 			[$inputUrl],
 			['dir'=>'/app/downloads']
 		);
-		return var_export($aria2c, true);//$result["result"];
+		
+		return var_export($aria2c->getGlobalStat(), true);//$result["result"];
 	}
 	
 	if(isset($_POST)) {
