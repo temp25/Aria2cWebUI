@@ -2,6 +2,14 @@
 	require_once("vendor/autoload.php");
 	$aria2c = new Aria2('http://localhost:6800/jsonrpc');
 	
+	function addDownload($inputUrl) {
+		$result = $aria2c->addUri(
+			[$inputUrl],
+			['dir'=>'/app/downloads']
+		);
+		return $result["result"];
+	}
+	
 	if(isset($_POST)) {
 		$action = $_POST["action"];
 		
@@ -16,11 +24,4 @@
 		die("Invalid script invocation");
 	}
 	
-	function addDownload($inputUrl) {
-		$result = $aria2c->addUri(
-			[$inputUrl],
-			['dir'=>'/app/downloads']
-		);
-		return $result["result"];
-	}
 ?>
