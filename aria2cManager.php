@@ -3,12 +3,12 @@
 	
 	function addDownload($aria2c, $inputUrl) {
 		
-		/* $result = $aria2c->addUri(
+		$result = $aria2c->addUri(
 			[$inputUrl],
 			['dir'=>'/app/downloads']
-		); */
+		);
 		
-		return shell_exec("gs.php");//$result["result"];
+		return $result["result"];
 	}
 	
 	if(isset($_POST)) {
@@ -17,7 +17,7 @@
 		
 		switch($action) {
 			case "addDownload": //echo "Add download invoked with url, " . $_POST["inputUrl"];
-								addDownload($aria2c, $_POST["inputUrl"]);
+								echo addDownload($aria2c, $_POST["inputUrl"]);
 								break;
 			default:	echo "Action not defined";
 		}

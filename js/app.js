@@ -10,6 +10,7 @@ $(document).ready(function() {
 	function postRequest(postUrl, postData) {
 		
 		return new Promise(function(resolve, reject) {
+			
 			$.post(postUrl, postData)
 				.done(function(data, status, xhr) {
 					console.log("done callback called");
@@ -25,6 +26,7 @@ $(document).ready(function() {
 					console.log(error); */
 					reject(error);
 				});
+				
 		});
 		
 	}
