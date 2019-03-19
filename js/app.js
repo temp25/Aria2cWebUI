@@ -13,9 +13,9 @@ $(document).ready(function() {
 			
 			$.post(postUrl, postData)
 				.done(function(data, status, xhr) {
-					console.log("done callback called");
+					/* console.log("done callback called");
 					console.log(xhr);
-					console.log(status);
+					console.log(status); */
 					resolve(xhr);
 				})
 				.fail(function(xhr, status, error) {
@@ -32,7 +32,7 @@ $(document).ready(function() {
 	}
 	
 	function addDownload(gid, url, position, percent, completed, size, download_speed, status){
-		var rowElement = "<tr>";
+		var rowElement = "<tr id="+gid+">";
 		rowElement += "<td>";
 		rowElement +=  gid;
 		rowElement += "</td>";
@@ -72,11 +72,13 @@ $(document).ready(function() {
 			inputUrl: url,
 		})
 		.then( function (xhr) {
-			console.log('xhr Contents: \n' );
-			console.log(xhr);
+			/* console.log('xhr Contents: \n' );
+			console.log(xhr); */
+			var gid = xhr.responseText;
+			console.log("Query for gid : "+gid);
 		},
 		function (error) {
-			console.error('Something went wrong', error);
+			console.error('Something went wrong with addDownload call', error);
 		});
 		
 		return true;
