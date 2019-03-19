@@ -42,16 +42,48 @@
 			<div class="container">
 				<ul class="list-inline">
 					<!-- add.php?type=<?=$_GET['type']?> -->
-					<li><a id="addDownload" href="javascript:;" class="btn btn-info"> <i
+					<li><a class="btn btn-info" data-toggle="modal" data-target="#modalForm"> <i
 						class="fa fa-plus"></i> Add new Download
-					</a></li>
+					</a>
+						<!-- Modal Form -->
+						<div class="modal fade" id="modalForm" role="dialog" aria-hidden="true" style="display: none;">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<!-- Modal Header -->
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">
+											<span aria-hidden="true">×</span>
+											<span class="sr-only">Close</span>
+										</button>
+										<h4 class="modal-title" id="myModalLabel">Add URL</h4>
+									</div>
+									
+									<!-- Modal Body -->
+									<div class="modal-body">
+										<p class="statusMsg"></p>
+										<form role="form">
+											<div class="form-group">
+												<input type="text" class="form-control" id="inputUrl" placeholder="Enter your url" />
+											</div>
+										</form>
+									</div>
+									
+									<!-- Modal Footer -->
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										<button id="addDownload" type="button" class="btn btn-primary submitBtn">Download</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
 					<!-- action.php?action=pauseall&type=<?=$_GET['type']?> -->
-					<li><a id="pauseAllDownload" href="javascript:;"
+					<li><a id="pauseAllDownload"
 						class="btn btn-warning"> <i class="fa fa-pause"></i> Pause All
 					</a>
 					
 					<!-- action.php?action=unpauseall&type=<?=$_GET['type']?> -->
-					<li><a id="resumeAllDownload" href="javascript:;"
+					<li><a id="resumeAllDownload"
 						class="btn btn-success"> <i class="fa fa-play"></i> Resume All
 					</a></li>
 					<!-- action.php?action=redownload_failed&type=<?=$_GET['type']?> -->
@@ -60,16 +92,16 @@
 						class="btn btn-info"> <i class="fa fa-recycle"></i> Re-download Failed
 					</a></li>
 					<!-- action.php?action=savesession&type=<?=$_GET['type']?> -->
-					<li><a id="saveSession" href="javascript:;"
+					<li><a id="saveSession"
 						class="btn btn-success"> <i class="fa fa-floppy-o"></i> Save Session
 					</a></li>
 					<!-- action.php?action=purge&type=<?=$_GET['type']?> -->
-					<li><a id="clearCompleted" href="javascript:;"
+					<li><a id="clearCompleted"
 						class="btn btn-danger"> <i class="fa fa-trash-o"></i> Clear Completed
 						or Failed
 					</a></li>
 					<!-- downloads -->
-					<li><a id="downloadFiles" href="javascript:;" class="btn btn-default"> <i
+					<li><a id="downloadFiles" class="btn btn-default"> <i
 						class="fa fa-download"></i> Downloaded Files
 					</a></li>
 				</ul>
