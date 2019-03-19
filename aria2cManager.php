@@ -8,7 +8,7 @@
 			['dir'=>'/app/downloads']
 		); */
 		
-		return print_r($aria2c->getGlobalStat(), true);//$result["result"];
+		return shell_exec("gs.php");//$result["result"];
 	}
 	
 	if(isset($_POST)) {
