@@ -1,5 +1,5 @@
 <?php
-	require_once("vendor/autoload.php");
+	require("vendor/autoload.php");
 	
 	function addDownload($inputUrl) {
 		$aria2c = new Aria2('http://localhost:6800/jsonrpc');
@@ -7,7 +7,7 @@
 			[$inputUrl],
 			['dir'=>'/app/downloads']
 		);
-		return $result["result"];
+		return var_export($aria2c, true);//$result["result"];
 	}
 	
 	if(isset($_POST)) {
