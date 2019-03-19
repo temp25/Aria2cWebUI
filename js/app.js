@@ -33,7 +33,7 @@ $(document).ready(function() {
 	}
 	
 	function addDownload(gid, url, position, percent, completed, size, download_speed, status){
-		var rowElement = "<tr id="+gid+">";
+		var rowElement = "<tr>";
 		rowElement += "<td>";
 		rowElement +=  gid;
 		rowElement += "</td>";
@@ -43,23 +43,38 @@ $(document).ready(function() {
 		rowElement += "<td>";
 		rowElement += position;
 		rowElement += "</td>";
-		rowElement += "<td>";
+		rowElement += "<td id='"+gid+"_percent'>";
 		rowElement += percent;
 		rowElement += "</td>";
-		rowElement += "<td>";
+		rowElement += "<td id='"+gid+"_completed'>";
 		rowElement += completed;
 		rowElement += "</td>";
-		rowElement += "<td>";
+		rowElement += "<td id='"+gid+"_size'>";
 		rowElement += size;
 		rowElement += "</td>";
-		rowElement += "<td>";
+		rowElement += "<td id='"+gid+"_download_speed'>";
 		rowElement += download_speed;
 		rowElement += "</td>";
-		rowElement += "<td>";
+		rowElement += "<td id='"+gid+"_status'>";
 		rowElement += status;
 		rowElement += "</td>";
 		rowElement += "</tr>"
 		$('tbody').append(rowElement);
+	}
+	
+	function updateProgressInBackground(id) {
+		var timerId = setInterval(() => {
+			postRequest("aria2cManager.php", {
+				action: "tellStatus",
+				gid: id,
+			})
+			.then( function (data) {
+				console.log("data : "+data);
+			},
+			function (error) {
+				console.error('Something went wrong with addDownload call', error);
+			});
+		}, 1000);
 	}
 
 	$("#addDownload").click(function(e){
@@ -75,7 +90,9 @@ $(document).ready(function() {
 		.then( function (gid) {
 			/* console.log('xhr Contents: \n' );
 			console.log(xhr); */
-			console.log("Query for gid : "+gid);
+			//console.log("Query for gid : "+gid);
+			addDownload(gid, url, gid, "0%", "0 MiB", "N/A", "N/A", "N/A");
+			updateProgressInBackground(gid);
 		},
 		function (error) {
 			console.error('Something went wrong with addDownload call', error);
