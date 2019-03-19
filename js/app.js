@@ -7,32 +7,25 @@ $(document).ready(function() {
         e.preventDefault();
     });
 	
-	function postRequest(url, data) {
+	function postRequest(postUrl, postData) {
 		
 		return new Promise(function(resolve, reject) {
-			$.post(url, data, function(data, status, xhr){
-				/* console.log(data);
-				console.log(status);
-				console.log(xhr); */
-				if(xhr.status == 200) {
+			$.post(postUrl, postData)
+				.done(function(data, status, xhr) {
+					/* console.log("done callback called");
+					console.log(xhr);
+					console.log(status);
+					console.log(error); */
 					resolve(xhr);
-				} else {
-					reject(new Error(xhr.responseText));
-				}
-			})
-			.done(function(xhr, status, error) {
-				console.log("done callback called");
-				console.log(xhr);
-				console.log(status);
-				console.log(error);
-			})
-			.fail(function(xhr, status, error) {
-				// error handling
-				console.log("fail callback called");
-				console.log(xhr);
-				console.log(status);
-				console.log(error);
-			});
+				})
+				.fail(function(xhr, status, error) {
+					// error handling
+					/* console.log("fail callback called");
+					console.log(xhr);
+					console.log(status);
+					console.log(error); */
+					reject(error);
+				});
 		});
 		
 	}
