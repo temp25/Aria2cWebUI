@@ -51,7 +51,7 @@ $(document).ready(function() {
 		var url = $('#inputUrl').val();
 		//alert("Entered url is : __"+url+"__");
 		
-		postRequest(url, {
+		postRequest("aria2cManager.php", {
 			action: "addDownload",
 			inputUrl: url,
 		});
