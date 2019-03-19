@@ -4,8 +4,49 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d57fda5b8a2b2a6f76f8666e3f0c08f",
+    "content-hash": "31f9f589c12f6a0ffcebc2392286af5f",
     "packages": [
+        {
+            "name": "daijie/aria2",
+            "version": "v1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shiny/php-aria2.git",
+                "reference": "2954b52c816154bbea035adfc00c200b575b284c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shiny/php-aria2/zipball/2954b52c816154bbea035adfc00c200b575b284c",
+                "reference": "2954b52c816154bbea035adfc00c200b575b284c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "WTFPL"
+            ],
+            "authors": [
+                {
+                    "name": "DaiJie",
+                    "email": "daijie@php.net"
+                }
+            ],
+            "description": "talk with aria2",
+            "homepage": "https://github.com/shiny/php-aria2",
+            "keywords": [
+                "aria2"
+            ],
+            "time": "2017-01-03T11:23:36+00:00"
+        },
         {
             "name": "firebase/php-jwt",
             "version": "v5.0.0",
@@ -113,16 +154,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.86",
+            "version": "v0.90",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "84496e256a7cac3a7817db7ba534829a370a3201"
+                "reference": "7ec8bd600d813d1307aafb4ab46d97495b4a88cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/84496e256a7cac3a7817db7ba534829a370a3201",
-                "reference": "84496e256a7cac3a7817db7ba534829a370a3201",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/7ec8bd600d813d1307aafb4ab46d97495b4a88cf",
+                "reference": "7ec8bd600d813d1307aafb4ab46d97495b4a88cf",
                 "shasum": ""
             },
             "require": {
@@ -146,7 +187,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2019-02-20T02:10:11+00:00"
+            "time": "2019-03-16T00:23:00+00:00"
         },
         {
             "name": "google/auth",
@@ -503,21 +544,21 @@
         },
         {
             "name": "paragonie/sodium_compat",
-            "version": "v1.8.1",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/sodium_compat.git",
-                "reference": "57bb5ef079d3724148da3d5c99e30695ab17afda"
+                "reference": "f261f50c84d20b1364723dbd21e668f4e40b2140"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/57bb5ef079d3724148da3d5c99e30695ab17afda",
-                "reference": "57bb5ef079d3724148da3d5c99e30695ab17afda",
+                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/f261f50c84d20b1364723dbd21e668f4e40b2140",
+                "reference": "f261f50c84d20b1364723dbd21e668f4e40b2140",
                 "shasum": ""
             },
             "require": {
                 "paragonie/random_compat": ">=1",
-                "php": "^5.2.4|^5.3|^5.4|^5.5|^5.6|^7"
+                "php": "^5.2.4|^5.3|^5.4|^5.5|^5.6|^7|^8"
             },
             "require-dev": {
                 "phpunit/phpunit": "^3|^4|^5"
@@ -581,20 +622,20 @@
                 "secret-key cryptography",
                 "side-channel resistant"
             ],
-            "time": "2019-01-03T21:00:55+00:00"
+            "time": "2019-03-06T17:16:38+00:00"
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.14",
+            "version": "2.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "8ebfcadbf30524aeb75b2c446bc2519d5b321478"
+                "reference": "11cf67cf78dc4acb18dc9149a57be4aee5036ce0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/8ebfcadbf30524aeb75b2c446bc2519d5b321478",
-                "reference": "8ebfcadbf30524aeb75b2c446bc2519d5b321478",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/11cf67cf78dc4acb18dc9149a57be4aee5036ce0",
+                "reference": "11cf67cf78dc4acb18dc9149a57be4aee5036ce0",
                 "shasum": ""
             },
             "require": {
@@ -673,7 +714,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2019-01-27T19:37:29+00:00"
+            "time": "2019-03-10T16:53:45+00:00"
         },
         {
             "name": "psr/cache",
@@ -914,7 +955,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v4.2.3",
+            "version": "v4.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -2229,7 +2270,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -2244,16 +2285,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.2.3",
+            "version": "v4.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "d461670ee145092b7e2a56c1da7118f19cadadb0"
+                "reference": "761fa560a937fd7686e5274ff89dcfa87a5047df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/d461670ee145092b7e2a56c1da7118f19cadadb0",
-                "reference": "d461670ee145092b7e2a56c1da7118f19cadadb0",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/761fa560a937fd7686e5274ff89dcfa87a5047df",
+                "reference": "761fa560a937fd7686e5274ff89dcfa87a5047df",
                 "shasum": ""
             },
             "require": {
@@ -2299,7 +2340,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-16T20:35:37+00:00"
+            "time": "2019-02-23T15:17:42+00:00"
         },
         {
             "name": "webmozart/assert",
