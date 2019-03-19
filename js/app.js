@@ -13,11 +13,11 @@ $(document).ready(function() {
 			
 			$.post(postUrl, postData)
 				.done(function(data, status, xhr) {
-					console.log("done callback called");
+					/* console.log("done callback called");
 					console.log(data);
 					console.log(status);
-					console.log(xhr);
-					resolve(xhr);
+					console.log(xhr); */
+					resolve(data);
 				})
 				.fail(function(xhr, status, error) {
 					// error handling
@@ -72,10 +72,9 @@ $(document).ready(function() {
 			action: "addDownload",
 			inputUrl: url,
 		})
-		.then( function (xhr) {
+		.then( function (gid) {
 			/* console.log('xhr Contents: \n' );
 			console.log(xhr); */
-			var gid = xhr.responseText;
 			console.log("Query for gid : "+gid);
 		},
 		function (error) {
