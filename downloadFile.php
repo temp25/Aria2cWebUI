@@ -2,8 +2,8 @@
 	require_once("vendor/autoload.php");
 	
 	if(isset($_GET)){
-		//$fileName = $_GET["fileName"];
-		//$absoluteFilePath = $_GET["absolutePath"];
+		$fileName = $_GET["fileName"];
+		$absoluteFilePath = $_GET["absolutePath"];
 		//$absoluteFilePath = getcwd() . DIRECTORY_SEPARATOR . $fileName;
 		//if(!file_exists($absoluteFilePath)) {
 			//die("File $fileName doesn't exists in directory, " . getcwd());
@@ -18,7 +18,7 @@
         header('Expires: 0');
         header('Cache-Control: must-revalidate');
         header('Pragma: public');
-        header('Content-Length: ' . filesize($filepath));
+        header('Content-Length: ' . filesize($absoluteFilePath));
         flush(); // Flush system output buffer
         readfile($absoluteFilePath);
         exit;
