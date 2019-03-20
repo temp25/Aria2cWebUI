@@ -106,6 +106,7 @@ $(document).ready(function() {
 		}
 		
 		downloadFileUrl += 'downloadFile.php?absolutePath='+absolutePath+'&fileName='+fileName;
+		console.debug("downloadFileUrl : "+downloadFileUrl);
 		//downloadFileUrl = encodeURIComponent(downloadFileUrl);
 		
 		var downloadFileElement = document.createElement('a');
@@ -147,7 +148,7 @@ $(document).ready(function() {
 							id: gid+'_downloadFileToLocal',
 							html: '<span class="fa fa-cloud-download">&nbsp;</span>Download'
 						})
-							.click({'param1': "my param1", 'param2': "my param2"}, downloadFileToLocal)
+							.click({'absolute_path': path, 'file_name': fileName}, downloadFileToLocal)
 							.appendTo("#"+gid+"_status");
 					}
 					clearInterval(progressTimerBuffer[gid]);
