@@ -74,6 +74,33 @@ $(document).ready(function() {
 		$('tbody').append(rowElement);
 	}
 	
+	function downloadFileToLocal(event) {
+		var absolutePath = event.data.absolute_path;
+		var fileName = event.data.file_name;
+		var field;
+		
+		console.debug("Debugging event object");
+		console.debug(event);
+		
+		var form = $('<form></form>');
+        form.attr("method", "POST");
+        form.attr("action", "downloadFile.php");
+		
+		field = $('<input></input>');
+		field.attr("type", "hidden");
+		field.attr("name", "fileName");
+		field.attr("value", fileName);
+		form.append(field);
+		
+		field = $('<input></input>');
+		field.attr("type", "hidden");
+		field.attr("name", "absolutePath");
+		field.attr("value", absolutePath);
+		form.append(field);
+        
+        $(form).appendTo('body').submit();
+	}
+	
 	function updateProgressInBackground(id) {
 		var timerId = setInterval(() => {
 			postRequest("aria2cManager.php", {
@@ -90,7 +117,8 @@ $(document).ready(function() {
 				var status = jsonData.status;
 				var gid = jsonData.gid;
 				var path = jsonData.files[0]["path"];
-				console.debug("\n\n\ncompletedLength : "+completedLength+"\tdownloadSpeed : "+downloadSpeed+"\ttotalLength : "+totalLength+"\tstatus : "+status+"\tgid : "+gid+"\tpath : "+path);
+				var fileName = baseName(path);
+				//console.debug("\n\n\ncompletedLength : "+completedLength+"\tdownloadSpeed : "+downloadSpeed+"\ttotalLength : "+totalLength+"\tstatus : "+status+"\tgid : "+gid+"\tpath : "+path);
 				$("#"+gid+"_percent").text(percent+"%");
 				$("#"+gid+"_completed").text(formatBytes(completedLength));
 				$("#"+gid+"_size").text(formatBytes(totalLength));
@@ -98,9 +126,10 @@ $(document).ready(function() {
 				$("#"+gid+"_status").text(status);
 				if(status=="error" || status=="complete" || status=="removed") {
 					console.debug("stopping progress update for gid, "+gid+" as status is "+status);
-					//if(status=="complete"){
-						//$("#"+gid+"_status").text("<button class='btn btn-default btn-xs glyphicon'><span class='fa fa-cloud-download'>&nbsp;&nbsp;&nbsp;</span>Download</button>");
-					//}
+					if(status=="complete"){
+						$("#"+gid+"_status").text("<button id='downloadFileToLocal' class='btn btn-default btn-xs glyphicon'><span class='fa fa-cloud-download'>&nbsp;&nbsp;&nbsp;</span>Download</button>");
+						$("#downloadFileToLocal").click({absolute_path: path, file_name: fileName}, downloadFileToLocal);
+					}
 					clearInterval(progressTimerBuffer[gid]);
 					delete progressTimerBuffer[gid];
 				}
@@ -111,6 +140,8 @@ $(document).ready(function() {
 		}, 1000);
 		progressTimerBuffer[id] = timerId;
 	}
+	
+	$()
 
 	$("#addDownload").click(function(e){
 		//alert('Add New Download__');
