@@ -127,8 +127,15 @@ $(document).ready(function() {
 				if(status=="error" || status=="complete" || status=="removed") {
 					console.debug("stopping progress update for gid, "+gid+" as status is "+status);
 					if(status=="complete"){
-						$("#"+gid+"_status").text("<button id='downloadFileToLocal' class='btn btn-default btn-xs glyphicon'><span class='fa fa-cloud-download'>&nbsp;&nbsp;&nbsp;</span>Download</button>");
-						$("#downloadFileToLocal").click({absolute_path: path, file_name: fileName}, downloadFileToLocal);
+						$("#"+gid+"_status").append("&nbsp;&nbsp;");
+						$( '<button />' , {
+							'class': 'btn btn-default btn-xs glyphicon',
+							type: 'button',
+							id: gid+'_downloadFileToLocal',
+							html: '<span class="fa fa-cloud-download">&nbsp;</span>Download'
+						})
+							.click({'param1': "my param1", 'param2': "my param2"}, downloadFileToLocal)
+							.appendTo("#"+gid+"_status");
 					}
 					clearInterval(progressTimerBuffer[gid]);
 					delete progressTimerBuffer[gid];
