@@ -4,7 +4,7 @@
 	if(isset($_GET)){
 		$fileName = $_GET["fileName"];
 		//$absoluteFilePath = $_GET["absolutePath"];
-		$absoluteFilePath = getcwd() . DIRECTORY_SEPARATOR . $fileName;
+		$absoluteFilePath = "/app/downloads/$fileName";
 		if(!file_exists($absoluteFilePath)) {
 			//die("File $fileName doesn't exists in directory, " . getcwd());
 			die("File $absoluteFilePath doesn't exists");
