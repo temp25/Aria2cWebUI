@@ -2,15 +2,27 @@
 	require_once("vendor/autoload.php");
 	
 	if(isset($_GET)){
-		$fileName = $_GET["fileName"];
-		$absoluteFilePath = $_GET["absolutePath"];
+		//$fileName = $_GET["fileName"];
+		//$absoluteFilePath = $_GET["absolutePath"];
 		//$absoluteFilePath = getcwd() . DIRECTORY_SEPARATOR . $fileName;
-		if(!file_exists($absoluteFilePath)) {
+		//if(!file_exists($absoluteFilePath)) {
 			//die("File $fileName doesn't exists in directory, " . getcwd());
-			die("File $absoluteFilePath doesn't exists");
-		}
-		$fileDownload = Apfelbox\FileDownload\FileDownload::createFromFilePath($absoluteFilePath);
-		$fileDownload->sendDownload($fileName);
+			//die("File $absoluteFilePath doesn't exists");
+		//}
+		//$fileDownload = Apfelbox\FileDownload\FileDownload::createFromFilePath($absoluteFilePath);
+		//$fileDownload->sendDownload($fileName);
+		
+		header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="'.basename($fileName).'"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($filepath));
+        flush(); // Flush system output buffer
+        readfile($absoluteFilePath);
+        exit;
+		
 	} else {
 		die("Invalid script invocation");
 	}
