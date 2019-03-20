@@ -15,6 +15,10 @@ $(document).ready(function() {
     	return parseFloat((a/Math.pow(c,f)).toFixed(d))+" "+e[f];
     }
 	
+	function baseName(path) {
+		return path.split(/[\\/]/).pop();
+	}
+	
 	function postRequest(postUrl, postData) {
 		
 		return new Promise(function(resolve, reject) {
@@ -85,7 +89,8 @@ $(document).ready(function() {
 				var downloadSpeed = jsonData.downloadSpeed;
 				var status = jsonData.status;
 				var gid = jsonData.gid;
-				console.debug("\n\n\ncompletedLength : "+completedLength+"\tdownloadSpeed : "+downloadSpeed+"\ttotalLength : "+totalLength+"\tstatus : "+status+"\tgid : "+gid);
+				var path = jsonData.files[0]["path"];
+				console.debug("\n\n\ncompletedLength : "+completedLength+"\tdownloadSpeed : "+downloadSpeed+"\ttotalLength : "+totalLength+"\tstatus : "+status+"\tgid : "+gid+"\tpath : "+path);
 				$("#"+gid+"_percent").text(percent+"%");
 				$("#"+gid+"_completed").text(formatBytes(completedLength));
 				$("#"+gid+"_size").text(formatBytes(totalLength));
@@ -93,6 +98,9 @@ $(document).ready(function() {
 				$("#"+gid+"_status").text(status);
 				if(status=="error" || status=="complete" || status=="removed") {
 					console.debug("stopping progress update for gid, "+gid+" as status is "+status);
+					//if(status=="complete"){
+						//$("#"+gid+"_status").text("<button class='btn btn-default btn-xs glyphicon'><span class='fa fa-cloud-download'>&nbsp;&nbsp;&nbsp;</span>Download</button>");
+					//}
 					clearInterval(progressTimerBuffer[gid]);
 					delete progressTimerBuffer[gid];
 				}
