@@ -110,7 +110,7 @@ $(document).ready(function() {
 		//downloadFileUrl = encodeURIComponent(downloadFileUrl);
 		
 		var downloadFileElement = document.createElement('a');
-		downloadFileElement.setAttribute('href', downloadFileUrl);
+		downloadFileElement.setAttribute('href', "downloadFile.php?fileName="+fileName); //downloadFileUrl);
 		downloadFileElement.setAttribute('download', fileName);
 		downloadFileElement.click();
 	}
