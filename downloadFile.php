@@ -9,11 +9,11 @@
 			//die("File $fileName doesn't exists in directory, " . getcwd());
 			die("File $absoluteFilePath doesn't exists");
 		}
-		echo "\nfileName : $fileName\n\nabsoluteFilePath : $absoluteFilePath";
+		//echo "\nfileName : $fileName\n\nabsoluteFilePath : $absoluteFilePath";
 		//$fileDownload = Apfelbox\FileDownload\FileDownload::createFromFilePath($absoluteFilePath);
 		//$fileDownload->sendDownload($fileName);
 		
-		/*header('Content-Description: File Transfer');
+		header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
         header('Content-Disposition: attachment; filename="'.basename($fileName).'"');
         header('Expires: 0');
@@ -23,7 +23,6 @@
         flush(); // Flush system output buffer
         readfile($absoluteFilePath);
         exit;
-		*/
 		
 	} else {
 		die("Invalid script invocation");
