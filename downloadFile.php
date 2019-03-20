@@ -1,5 +1,5 @@
 <?php
-	require_once("vendor/autoload.php");
+	ini_set('memory_limit', '-1');
 	
 	if(isset($_GET)){
 		$fileName = $_GET["fileName"];
