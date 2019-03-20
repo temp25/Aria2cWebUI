@@ -82,7 +82,7 @@ $(document).ready(function() {
 		console.debug("Debugging event object");
 		console.debug(event);
 		
-		var form = $('<form></form>');
+		/* var form = $('<form></form>');
         form.attr("method", "POST");
         form.attr("action", "downloadFile.php");
 		
@@ -98,7 +98,20 @@ $(document).ready(function() {
 		field.attr("value", absolutePath);
 		form.append(field);
         
-        $(form).appendTo('body').submit();
+        $(form).appendTo('body').submit(); */
+		
+		var downloadFileUrl = window.location.href.replace("index.html", "");
+		if(downloadFileUrl[downloadFileUrl.length-1] != "/"){
+			downloadFileUrl += "/";
+		}
+		
+		downloadFileUrl += 'downloadFile.php?absolutePath='+absolutePath+'&fileName='+fileName;
+		//downloadFileUrl = encodeURIComponent(downloadFileUrl);
+		
+		var downloadFileElement = document.createElement('a');
+		downloadFileElement.setAttribute('href', downloadFileUrl);
+		downloadFileElement.setAttribute('download', fileName);
+		downloadFileElement.click();
 	}
 	
 	function updateProgressInBackground(id) {

@@ -1,9 +1,9 @@
 <?php
 	require_once("vendor/autoload.php");
 	
-	if(isset($_POST)){
-		$fileName = $_POST["fileName"];
-		$absoluteFilePath = $_POST["absolutePath"];
+	if(isset($_GET)){
+		$fileName = $_GET["fileName"];
+		$absoluteFilePath = $_GET["absolutePath"];
 		//$absoluteFilePath = getcwd() . DIRECTORY_SEPARATOR . $fileName;
 		if(!file_exists($absoluteFilePath)) {
 			//die("File $fileName doesn't exists in directory, " . getcwd());
